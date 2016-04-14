@@ -36,7 +36,7 @@ static NSString * const kSdpFormatString =
 
 // send invitation needs token to send invite. How is token coming to this call?
 
--(void)sendInvite:(NSString*)inviteToken success:(void(^)(void))success failure:(void(^)(NSError *NSError))failure{
+-(void)sendInvite:(NSString*)inviteToken success:(void(^)(NSDictionary *))success failure:(void(^)(NSError *NSError))failure{
     
     
     NSString *payload = [NSString stringWithFormat:@"{\"token\":\"%@\"}", inviteToken];
@@ -356,7 +356,12 @@ static NSString * const kSdpFormatString =
 
 - (void)iCoAPExchange:(ICoAPExchange *)exchange didReceiveCoAPMessage:(ICoAPMessage *)coapMessage
 {
-    success();
+    if(coapMessage != nil)
+    {
+        NSData *data = [coapMessage.payload dataUsingEncoding:NSUTF8StringEncoding];
+        NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+        success(dictionary);
+    }
 }
 
 - (void)iCoAPExchange:(ICoAPExchange *)exchange didFailWithError:(NSError *)error

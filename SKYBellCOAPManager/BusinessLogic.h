@@ -14,7 +14,7 @@
 #import "SKYConstants.h"
 
 typedef void (^CompletionHandler)(NSArray *users, NSError *error);
-typedef void (^Success)(void);
+typedef void (^Success)(NSDictionary *);
 typedef void (^Failure)(NSError *error);
 //typedef void (^onNestUserLinkedInfoSuccess) (BOOL isSignedIn);
 //typedef void (^onNestUserLinkedInfoFail)(void);
@@ -34,20 +34,19 @@ typedef void (^Failure)(NSError *error);
 
 //-(void)provisionDictionary withCompletionHandler:(CompletionHandler)completionHandler;
 
--(void)requestInvite:(BOOL)isIntrospectionEnabled success:(void(^)(void))success failure:(void(^)(NSError *NSError))failure;
+-(void)requestInvite:(BOOL)isIntrospectionEnabled success:(void(^)(NSDictionary *))success failure:(void(^)(NSError *NSError))failure;
 
--(NSDictionary *)provisionDictionaryWithPassword:(NSString *)password withNetworkName:(NSString *)networkName;
+-(NSDictionary *)provisionDictionaryWithPassword:(NSString *)password withNetworkName:(NSString *)networkName success:(void(^)(NSDictionary *))success failure:(void(^)(NSError *NSError))failure;;
 
--(void)sendInvite:(NSString*)inviteToken success:(void(^)(void))success failure:(void(^)(NSError *NSError))failure;
+-(void)sendInvite:(NSString*)inviteToken success:(void(^)(NSDictionary *))success failure:(void(^)(NSError *NSError))failure;
 
 
--(void)sendInvite:(NSString*)inviteToken success:(void(^)(void))success failure:(void(^)(NSError *NSError))failure withCompletionHandler:(CompletionHandler)completionHandler;
-
+//-(void)sendInvite:(NSString*)inviteToken success:(void(^)(NSDictionary *))success failure:(void(^)(NSError *NSError))failure ;
 //- (NSDictionary *)provisionDictionary ipTypeIsDHCPOrManual:(NSString*)ipType;
 
--(void)scanForAvailableNetwork;
+-(void)scanForAvailableNetwork success:(void(^)(NSDictionary *))success failure:(void(^)(NSError *NSError))failure;
 
--(void)provisionSkyBell;
+-(void)provisionSkyBell success:(void(^)(NSDictionary *))success failure:(void(^)(NSError *NSError))failure;;
 
 -(void)provisionSkyBell:(BOOL)isAdvancedStuffEnabledForReal selectNetworkSSID:(NSString *)selectedNetworkSSID password:(NSString *)passwordForSelectedNetwork ipTypeIsDHCPOrManual:(NSString*)ipType;
 
