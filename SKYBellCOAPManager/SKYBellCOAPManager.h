@@ -17,3 +17,4 @@ FOUNDATION_EXPORT const unsigned char SKYBellCOAPManagerVersionString[];
 // In this header, you should import all the public headers of your framework using statements like #import <SKYBellCOAPManager/PublicHeader.h>
 
 
+#import <SKYBellCOAPManager/BusinessLogic.h>
