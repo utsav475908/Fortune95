@@ -44,9 +44,9 @@ typedef void (^Failure)(NSError *error);
 //-(void)sendInvite:(NSString*)inviteToken success:(void(^)(NSDictionary *))success failure:(void(^)(NSError *NSError))failure ;
 //- (NSDictionary *)provisionDictionary ipTypeIsDHCPOrManual:(NSString*)ipType;
 
--(void)scanForAvailableNetwork success:(void(^)(NSDictionary *))success failure:(void(^)(NSError *NSError))failure;
+-(void)scanForAvailableNetworkWithSuccess:(void(^)(NSDictionary *))success failure:(void(^)(NSError *NSError))failure;
 
--(void)provisionSkyBell success:(void(^)(NSDictionary *))success failure:(void(^)(NSError *NSError))failure;;
+-(void)provisionSkyBellWithSuccess:(void(^)(NSDictionary *))success failure:(void(^)(NSError *NSError))failure;;
 
 -(void)provisionSkyBell:(BOOL)isAdvancedStuffEnabledForReal selectNetworkSSID:(NSString *)selectedNetworkSSID password:(NSString *)passwordForSelectedNetwork ipTypeIsDHCPOrManual:(NSString*)ipType;
 

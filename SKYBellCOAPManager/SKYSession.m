@@ -21,8 +21,9 @@
 @end
 
 @implementation SKYSession
+#define UNIQUE_KEY( x ) NSString * const x = @#x
 
-//UNIQUE_KEY(SKYAccountManagerUserDidAuthenticateNotification);
+UNIQUE_KEY(SKYAccountManagerUserDidAuthenticateNotification);
 
 __strong static id _sharedObject = nil;
 
