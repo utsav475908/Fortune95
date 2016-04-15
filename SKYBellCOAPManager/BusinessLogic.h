@@ -16,25 +16,15 @@
 typedef void (^CompletionHandler)(NSArray *users, NSError *error);
 typedef void (^Success)(NSDictionary *);
 typedef void (^Failure)(NSError *error);
-//typedef void (^onNestUserLinkedInfoSuccess) (BOOL isSignedIn);
-//typedef void (^onNestUserLinkedInfoFail)(void);
+
 
 @interface BusinessLogic : NSObject <ICoAPExchangeDelegate> {
     CompletionHandler completionHandler;
     Success success;
     Failure failure;
-    //void(^)(void))success successHandler;
-    
+
 }
-//@property (nonatomic, strong) ICoAPExchange *tokenExchange;
-//@property (nonatomic, strong) ICoAPExchange *scanExchange;
-//@property (nonatomic, copy) CompletionHandler completionHandler;
-//@property (nonatomic, copy) onNestUserLinkedInfoSuccess onNestUserLinkedInfoSuccess;
-//@property (nonatomic, copy) onNestUserLinkedInfoFail onNestUserLinkedInfoFail;
 
-//-(void)provisionDictionary withCompletionHandler:(CompletionHandler)completionHandler;
-
-//-(void)requestInvite:(BOOL)isIntrospectionEnabled success:(void(^)(NSDictionary *))success failure:(void(^)(NSError *NSError))failure;
 
 -(void)requestInvite:(BOOL)isIntrospectionEnabled success:(Success)success failure:(Failure)failure;
 
@@ -43,17 +33,15 @@ typedef void (^Failure)(NSError *error);
 -(void)sendInvite:(NSString*)inviteToken success:(Success)success failure:(Failure)failure;
 
 
-//-(void)sendInvite:(NSString*)inviteToken success:(void(^)(NSDictionary *))success failure:(void(^)(NSError *NSError))failure ;
-//- (NSDictionary *)provisionDictionary ipTypeIsDHCPOrManual:(NSString*)ipType;
+
 //scanning Network.
 -(void)scanForAvailableNetworkWithSuccess:(Success)success failure:(Failure)failure;
 
-//-(void)provisionSkyBellWithSuccess:(void(^)(NSDictionary *))success failure:(void(^)(NSError *NSError))failure;;
+// provisioning 
 
 -(void)provisionSkyBell:(BOOL)isAdvancedStuffEnabledForReal selectNetworkSSID:(NSString *)selectedNetworkSSID password:(NSString *)passwordForSelectedNetwork ipTypeIsDHCPOrManual:(NSString*)ipType success:(Success)success failure:(Failure)failure;
 
 
-//-(void)requestInvite:(NSString*)inviteToken success:(void(^)(void))success failure:(void(^)(NSError *NSError))failure;
 
 -(void)requestRegisterCallEvent:(NSString*)payload isIntrospectionEnabled:(BOOL)isIntrospectionEnabled;
 

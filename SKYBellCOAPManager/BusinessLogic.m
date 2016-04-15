@@ -81,7 +81,7 @@ static NSString * const kSdpFormatString =
 #endif
     
     if (!isAdvancedStuffEnabledForReal) {
-        //SIMPLE PAYLOAD WORKING BUT ADVANCED IS FUCKED UP. NEED TO DISCUSS WITH HITEM
+        //SIMPLE PAYLOAD WORKING BUT ADVANCED IS messed UP. NEED TO DISCUSS WITH HITEM
         
         //THIS IS FIXED NOW BUT STILL NECESSARY TO DEPLOY STABLE SKYBELL FIRMWARE TO PRODUCTION TO BE ABLE TO
         //USE THE ADVANCED PAYLOAD
@@ -105,8 +105,6 @@ static NSString * const kSdpFormatString =
     }
 
 }
-
-//-(void)requestInvite:(BOOL)isIntrospectionEnabled success:(void(^)(void))success failure:(void(^)(NSError *NSError))failure{
 
 -(void)requestInvite:(BOOL)isIntrospectionEnabled success:(Success)success failure:(Failure)failure{
     SKYCallConfiguration * callConfiguration = [[SKYCallConfiguration alloc]init];
@@ -185,8 +183,6 @@ static NSString * const kSdpFormatString =
     return accessToken;
 }
 
-
-//- (NSDictionary *)provisionDictionary withComletionHandler:(CompletionHandler)completionHandler
 -(NSDictionary *)provisionDictionaryWithPassword:(NSString *)password withNetworkName:(NSString *)networkName; {
     NSMutableDictionary *mutableProvision = [NSMutableDictionary dictionary];
     
@@ -203,17 +199,10 @@ static NSString * const kSdpFormatString =
         NSLog(@"No SKYSecurityTypeNone is the security");
     }
     else if ((ipType = @"manual")) {
-        
-//        [ipConfig setValue:self.ipAddressTextField.text forKey:@"ip"];
-//        [ipConfig setValue:self.subnetMaskTextField.text forKey:@"mask"];
-//        [ipConfig setValue:self.gatewayTextField.text forKey:@"gateway"];
-//        [ipConfig setValue:self.dnsTextField.text forKey:@"dns0"];
-//        [ipConfig setValue:self.dnsTextField.text forKey:@"dns1"];
+// not handling for manual right now.
     }
     
     [ipConfig setValue:ipType forKey:@"type"];
-//    NSString *networkToName = networkName;
-//    NSString *passwordToName = password;
     NSMutableDictionary *config = [NSMutableDictionary dictionary];
     [config setValue:@"dhcp" forKey:@"type"];
     [config setValue:networkName forKey:@"essid"];
@@ -240,55 +229,6 @@ static NSString * const kSdpFormatString =
     return provisionDict;
 }
 
-//----
-//- (NSDictionary *)provisionDictionary ipTypeIsDHCPOrManual:(NSString*)ipType {
-//    NSMutableDictionary *mutableProvision = [NSMutableDictionary dictionary];
-//    
-//    NSMutableDictionary *ipConfig = [NSMutableDictionary dictionary];
-//    NSString *ipType = @"";
-//    
-//    if (self.networkSegmentedControl.selectedSegmentIndex == 0) {
-//        ipType = @"dhcp";
-//        if ([self.networkPasswordTextField.text isEqualToString:@""]) {
-//            self.securityType = SKYSecurityTypeNone;
-//        }
-//    }
-//    else if (self.networkSegmentedControl.selectedSegmentIndex == 1) {
-//        ipType = @"manual";
-//        [ipConfig setValue:self.ipAddressTextField.text forKey:@"ip"];
-//        [ipConfig setValue:self.subnetMaskTextField.text forKey:@"mask"];
-//        [ipConfig setValue:self.gatewayTextField.text forKey:@"gateway"];
-//        [ipConfig setValue:self.dnsTextField.text forKey:@"dns0"];
-//        [ipConfig setValue:self.dnsTextField.text forKey:@"dns1"];
-//    }
-//    
-//    [ipConfig setValue:ipType forKey:@"type"];
-//    
-//    NSMutableDictionary *config = [NSMutableDictionary dictionary];
-//    [config setValue:[self securityTypeName] forKey:@"type"];
-//    [config setValue:self.selectedNetworkSSID forKey:@"essid"];
-//    
-//    if (self.securityType == SKYSecurityTypeWEP) {
-//        [config setValue:self.passwordForSelectedNetwork forKey:@"wep_key0"];
-//    }
-//    else {
-//        [config setValue:self.passwordForSelectedNetwork forKey:@"psk"];
-//    }
-//    
-//    [mutableProvision setValue:config forKey:@"wirelessConfig"];
-//    [mutableProvision setValue:ipConfig forKey:@"ipConfig"];
-//    [mutableProvision setValue:@"Front Door" forKey:@"deviceName"];
-//    [mutableProvision setValue:self.selectedTimeZone forKey:@"timezone"];
-//    
-//    NSDictionary *provision = [NSDictionary dictionaryWithDictionary:mutableProvision];
-//    NSMutableDictionary *provisionDict = [NSMutableDictionary dictionary];
-//    
-//    [provisionDict setValue:provision forKey:@"provision"];
-//    
-//    return provisionDict;
-//}
-
-//----
 
 -(NSString*)payload{
     return @"payload contains device id, and current date";
@@ -296,10 +236,7 @@ static NSString * const kSdpFormatString =
 
 
 -(void)requestRegisterCallEvent:(NSString*)payload isIntrospectionEnabled:(BOOL)isIntrospectionEnabled {
-//    NSString *payload = [NSString stringWithFormat:@"{\"deviceId\": \"%@\",\"callId\": \"%@\",\"event\": \"application:on-demand\",\"sentAt\": \"%@\"}", self.callConfiguration.deviceId, self.callConfiguration.callId, [[NSDate date] zuluFormattedStringDate]];
-    //#if DEBUG
-    //    NSLog(@"device ID: %@, call ID: %@", self.callConfiguration.deviceId, self.callConfiguration.callId);
-    //#endif
+
     ICoAPMessage *eventMessage = [[ICoAPMessage alloc] initAsRequestConfirmable:YES requestMethod:IC_POST sendToken:YES payload:payload];
     [eventMessage addOption:IC_URI_PATH withValue:@"event"];
     [eventMessage addOption:IC_CONTENT_FORMAT withValue:[NSString stringWithFormat:@"%lu", (unsigned long)IC_JSON]];
@@ -328,9 +265,6 @@ static NSString * const kSdpFormatString =
     if (!appId) {
         appId = [[NSUserDefaults standardUserDefaults] objectForKey:kAppIdKey];
     }
-    
-//    NSString *payload = [NSString stringWithFormat:@"{\"uuid\" : \"%@\",\"event\" : \"event:hangup\",\"time\": \"%@\",\"device_id\": \"%@\",\"callid\" : \"%@\", \"role\": \"%@\"}",
-//                         appId, [[NSDate date] zuluFormattedStringDate], self.callConfiguration.deviceId, self.callConfiguration.callId, self.callConfiguration.role];
     ICoAPMessage *hangUpMessage;
     hangUpMessage = [[ICoAPMessage alloc] initAsRequestConfirmable:YES requestMethod:IC_POST sendToken:YES payload:payload];
     [hangUpMessage addOption:IC_URI_PATH withValue:@"hangup"];
