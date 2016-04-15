@@ -26,29 +26,31 @@ typedef void (^Failure)(NSError *error);
     //void(^)(void))success successHandler;
     
 }
-@property (nonatomic, strong) ICoAPExchange *tokenExchange;
-@property (nonatomic, strong) ICoAPExchange *scanExchange;
+//@property (nonatomic, strong) ICoAPExchange *tokenExchange;
+//@property (nonatomic, strong) ICoAPExchange *scanExchange;
 //@property (nonatomic, copy) CompletionHandler completionHandler;
 //@property (nonatomic, copy) onNestUserLinkedInfoSuccess onNestUserLinkedInfoSuccess;
 //@property (nonatomic, copy) onNestUserLinkedInfoFail onNestUserLinkedInfoFail;
 
 //-(void)provisionDictionary withCompletionHandler:(CompletionHandler)completionHandler;
 
--(void)requestInvite:(BOOL)isIntrospectionEnabled success:(void(^)(NSDictionary *))success failure:(void(^)(NSError *NSError))failure;
+//-(void)requestInvite:(BOOL)isIntrospectionEnabled success:(void(^)(NSDictionary *))success failure:(void(^)(NSError *NSError))failure;
+
+-(void)requestInvite:(BOOL)isIntrospectionEnabled success:(Success)success failure:(Failure)failure;
 
 -(NSDictionary *)provisionDictionaryWithPassword:(NSString *)password withNetworkName:(NSString *)networkName success:(void(^)(NSDictionary *))success failure:(void(^)(NSError *NSError))failure;;
-
+// sendInvitation.
 -(void)sendInvite:(NSString*)inviteToken success:(void(^)(NSDictionary *))success failure:(void(^)(NSError *NSError))failure;
 
 
 //-(void)sendInvite:(NSString*)inviteToken success:(void(^)(NSDictionary *))success failure:(void(^)(NSError *NSError))failure ;
 //- (NSDictionary *)provisionDictionary ipTypeIsDHCPOrManual:(NSString*)ipType;
+//scanning Network.
+-(void)scanForAvailableNetworkWithSuccess:(Success)success failure:(Failure)failure;
 
--(void)scanForAvailableNetworkWithSuccess:(void(^)(NSDictionary *))success failure:(void(^)(NSError *NSError))failure;
+//-(void)provisionSkyBellWithSuccess:(void(^)(NSDictionary *))success failure:(void(^)(NSError *NSError))failure;;
 
--(void)provisionSkyBellWithSuccess:(void(^)(NSDictionary *))success failure:(void(^)(NSError *NSError))failure;;
-
--(void)provisionSkyBell:(BOOL)isAdvancedStuffEnabledForReal selectNetworkSSID:(NSString *)selectedNetworkSSID password:(NSString *)passwordForSelectedNetwork ipTypeIsDHCPOrManual:(NSString*)ipType;
+-(void)provisionSkyBell:(BOOL)isAdvancedStuffEnabledForReal selectNetworkSSID:(NSString *)selectedNetworkSSID password:(NSString *)passwordForSelectedNetwork ipTypeIsDHCPOrManual:(NSString*)ipType success:(Success)success failure:(Failure)failure;
 
 
 //-(void)requestInvite:(NSString*)inviteToken success:(void(^)(void))success failure:(void(^)(NSError *NSError))failure;

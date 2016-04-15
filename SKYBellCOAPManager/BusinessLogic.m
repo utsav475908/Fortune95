@@ -36,8 +36,7 @@ static NSString * const kSdpFormatString =
 
 // send invitation needs token to send invite. How is token coming to this call?
 
--(void)sendInvite:(NSString*)inviteToken success:(void(^)(NSDictionary *))success failure:(void(^)(NSError *NSError))failure{
-    
+-(void)sendInvite:(NSString*)inviteToken success:(Success)success failure:(Failure)failure{
     
     NSString *payload = [NSString stringWithFormat:@"{\"token\":\"%@\"}", inviteToken];
     ICoAPMessage *cO = [[ICoAPMessage alloc] initAsRequestConfirmable:YES
@@ -46,17 +45,17 @@ static NSString * const kSdpFormatString =
                                                               payload:payload];
     
     [cO addOption:IC_URI_PATH withValue:@"invite_token"];
-    
-    self.tokenExchange = [[ICoAPExchange alloc] init];
-    self.tokenExchange.isRequestLocal = YES;
-    self.tokenExchange.delegate = self;
-    [self.tokenExchange sendRequestWithCoAPMessage:cO toHost:kDeviceAddress port:kCoAPRemotePort];
+    ICoAPExchange *tokenExchange;
+    tokenExchange = [[ICoAPExchange alloc] init];
+    tokenExchange.isRequestLocal = YES;
+    tokenExchange.delegate = self;
+    [tokenExchange sendRequestWithCoAPMessage:cO toHost:kDeviceAddress port:kCoAPRemotePort];
     
 }
 
 
 
--(void)scanForAvailableNetwork{
+-(void)scanForAvailableNetworkWithSuccess:(Success)success failure:(Failure)failure {
     ICoAPMessage *cO = [[ICoAPMessage alloc] initAsRequestConfirmable:YES requestMethod:IC_POST sendToken:YES payload:nil];
     [cO addOption:IC_URI_PATH withValue:@"apscan"];
     
@@ -67,7 +66,7 @@ static NSString * const kSdpFormatString =
     
 }
 
--(void)provisionSkyBell:(BOOL)isAdvancedStuffEnabledForReal selectNetworkSSID:(NSString *)selectedNetworkSSID password:(NSString *)passwordForSelectedNetwork ipTypeIsDHCPOrManual:(NSString*)ipType{
+-(void)provisionSkyBell:(BOOL)isAdvancedStuffEnabledForReal selectNetworkSSID:(NSString *)selectedNetworkSSID password:(NSString *)passwordForSelectedNetwork ipTypeIsDHCPOrManual:(NSString*)ipType success:(Success)success failure:(Failure)failure {
     // I am adding ipType because provision dictionary requires this.
     //self.cancelButton.hidden = YES;
     NSError *error = [NSError errorWithDomain:@"com.myskybell.doorbell" code:10008000 userInfo:@{@"description": @"error encoding data from dictionary"}];
@@ -107,8 +106,9 @@ static NSString * const kSdpFormatString =
 
 }
 
+//-(void)requestInvite:(BOOL)isIntrospectionEnabled success:(void(^)(void))success failure:(void(^)(NSError *NSError))failure{
 
--(void)requestInvite:(BOOL)isIntrospectionEnabled success:(void(^)(void))success failure:(void(^)(NSError *NSError))failure{
+-(void)requestInvite:(BOOL)isIntrospectionEnabled success:(Success)success failure:(Failure)failure{
     SKYCallConfiguration * callConfiguration = [[SKYCallConfiguration alloc]init];
     NSString *hostIpAddress = [[SKYEndpointsManager sharedManager] coapServerEndpoint];
     NSString *deviceIpAddress = [self getIPAddress];
