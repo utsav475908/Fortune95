@@ -40,7 +40,7 @@ typedef void (^Failure)(NSError *error);
 
 -(NSDictionary *)provisionDictionaryWithPassword:(NSString *)password withNetworkName:(NSString *)networkName success:(void(^)(NSDictionary *))success failure:(void(^)(NSError *NSError))failure;;
 // sendInvitation.
--(void)sendInvite:(NSString*)inviteToken success:(void(^)(NSDictionary *))success failure:(void(^)(NSError *NSError))failure;
+-(void)sendInvite:(NSString*)inviteToken success:(Success)success failure:(Failure)failure;
 
 
 //-(void)sendInvite:(NSString*)inviteToken success:(void(^)(NSDictionary *))success failure:(void(^)(NSError *NSError))failure ;
@@ -55,9 +55,9 @@ typedef void (^Failure)(NSError *error);
 
 //-(void)requestInvite:(NSString*)inviteToken success:(void(^)(void))success failure:(void(^)(NSError *NSError))failure;
 
--(void)requestRegisterCallEvent;
+-(void)requestRegisterCallEvent:(NSString*)payload isIntrospectionEnabled:(BOOL)isIntrospectionEnabled;
 
--(void)requestHangUp;
+-(void)requestHangUp :(NSString*)payload isIntrospectionEnabled:(BOOL)isIntrospectionEnabled success:(Success)success failure:(Failure)failure;
 
 
 

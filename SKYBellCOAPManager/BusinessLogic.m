@@ -319,7 +319,7 @@ static NSString * const kSdpFormatString =
 
 }
 
--(void)requestHangUp :(NSString*)payload isIntrospectionEnabled:(BOOL)isIntrospectionEnabled {
+-(void)requestHangUp :(NSString*)payload isIntrospectionEnabled:(BOOL)isIntrospectionEnabled success:(Success)success failure:(Failure)failure {
     NSString *hostIpAddress = [[SKYEndpointsManager sharedManager] coapServerEndpoint];
     
     SKYKeychainService *keychainService = [SKYKeychainService defaultKeychainService];
