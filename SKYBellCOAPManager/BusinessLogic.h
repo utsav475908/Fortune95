@@ -28,7 +28,7 @@ typedef void (^Failure)(NSError *error);
 
 -(void)requestInvite:(BOOL)isIntrospectionEnabled success:(Success)success failure:(Failure)failure;
 
--(NSDictionary *)provisionDictionaryWithPassword:(NSString *)password withNetworkName:(NSString *)networkName success:(void(^)(NSDictionary *))success failure:(void(^)(NSError *NSError))failure;;
+-(NSDictionary *)provisionDictionaryWithPassword:(NSString *)password withNetworkName:(NSString *)networkName;
 // sendInvitation.
 -(void)sendInvite:(NSString*)inviteToken success:(Success)success failure:(Failure)failure;
 

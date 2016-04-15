@@ -183,7 +183,7 @@ static NSString * const kSdpFormatString =
     return accessToken;
 }
 
--(NSDictionary *)provisionDictionaryWithPassword:(NSString *)password withNetworkName:(NSString *)networkName; {
+-(NSDictionary *)provisionDictionaryWithPassword:(NSString *)password withNetworkName:(NSString *)networkName{
     NSMutableDictionary *mutableProvision = [NSMutableDictionary dictionary];
     
     NSMutableDictionary *ipConfig = [NSMutableDictionary dictionary];
