@@ -18,3 +18,9 @@ FOUNDATION_EXPORT const unsigned char SKYBellCOAPManagerVersionString[];
 
 
 #import <SKYBellCOAPManager/BusinessLogic.h>
+#import <SKYBellCOAPManager/GCDAsyncUdpSocket.h>
+#import <SKYBellCOAPManager/ICoAPExchange.h>
+#import <SKYBellCOAPManager/ICoAPMessage.h>
+//#import <SKYBellCOAPManager/GCDAsyncUdpSocket.h>
+//#import <SKYBellCOAPManager/GCDAsyncUdpSocket.h>
+
