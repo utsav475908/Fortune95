@@ -30,7 +30,6 @@
 		4554C1F31CBBBAF400CB55BD /* SKYKeychainService.m in Sources */ = {isa = PBXBuildFile; fileRef = 4554C1F11CBBBAF400CB55BD /* SKYKeychainService.m */; };
 		4554C1F61CBBCA4600CB55BD /* SKYSession.h in Headers */ = {isa = PBXBuildFile; fileRef = 4554C1F41CBBCA4600CB55BD /* SKYSession.h */; };
 		4554C1F71CBBCA4600CB55BD /* SKYSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 4554C1F51CBBCA4600CB55BD /* SKYSession.m */; };
-		4554C1FA1CBDE96D00CB55BD /* DeleteSample.h in Headers */ = {isa = PBXBuildFile; fileRef = 4554C1F81CBDE96D00CB55BD /* DeleteSample.h */; };
 		4554C1FE1CBE543B00CB55BD /* AFOAuth2Manager.h in Headers */ = {isa = PBXBuildFile; fileRef = 4554C1FC1CBE543B00CB55BD /* AFOAuth2Manager.h */; };
 		4554C1FF1CBE543B00CB55BD /* AFOAuth2Manager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4554C1FD1CBE543B00CB55BD /* AFOAuth2Manager.m */; };
 		4554C2131CBE553000CB55BD /* AFHTTPRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 4554C2001CBE553000CB55BD /* AFHTTPRequestOperation.h */; };
@@ -88,8 +87,6 @@
 		4554C1F11CBBBAF400CB55BD /* SKYKeychainService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKYKeychainService.m; sourceTree = "<group>"; };
 		4554C1F41CBBCA4600CB55BD /* SKYSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKYSession.h; sourceTree = "<group>"; };
 		4554C1F51CBBCA4600CB55BD /* SKYSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKYSession.m; sourceTree = "<group>"; };
-		4554C1F81CBDE96D00CB55BD /* DeleteSample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeleteSample.h; sourceTree = "<group>"; };
-		4554C1F91CBDE96D00CB55BD /* DeleteSample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeleteSample.m; sourceTree = "<group>"; };
 		4554C1FC1CBE543B00CB55BD /* AFOAuth2Manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFOAuth2Manager.h; sourceTree = "<group>"; };
 		4554C1FD1CBE543B00CB55BD /* AFOAuth2Manager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFOAuth2Manager.m; sourceTree = "<group>"; };
 		4554C2001CBE553000CB55BD /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -184,8 +181,6 @@
 				4554C2331CBE574100CB55BD /* NSError+SkyBell.m */,
 				4554C22A1CBE55D000CB55BD /* SKYNestPartnerService.h */,
 				4554C22B1CBE55D000CB55BD /* SKYNestPartnerService.m */,
-				4554C1F81CBDE96D00CB55BD /* DeleteSample.h */,
-				4554C1F91CBDE96D00CB55BD /* DeleteSample.m */,
 				4554C2361CBE66DC00CB55BD /* Extras */,
 			);
 			path = SKYBellCOAPManager;
@@ -249,7 +244,6 @@
 				4554C2281CBE559000CB55BD /* SKYNetworkManager.h in Headers */,
 				4554C1E71CBBA39000CB55BD /* SKYConstants.h in Headers */,
 				4554C2171CBE553000CB55BD /* AFHTTPSessionManager.h in Headers */,
-				4554C1FA1CBDE96D00CB55BD /* DeleteSample.h in Headers */,
 				4554C2221CBE553000CB55BD /* AFURLResponseSerialization.h in Headers */,
 				4554C1FE1CBE543B00CB55BD /* AFOAuth2Manager.h in Headers */,
 				4554C1EE1CBBB9CA00CB55BD /* SKYCallConfiguration.h in Headers */,
@@ -495,6 +489,7 @@
 				4554C1C71CBB9B0500CB55BD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

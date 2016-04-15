@@ -150,9 +150,9 @@ static NSString * const kSdpFormatString =
     NSString *address = @"error";
     struct ifaddrs *interfaces = NULL;
     struct ifaddrs *temp_addr = NULL;
-    int success = getifaddrs(&interfaces);
+    int success1 = getifaddrs(&interfaces);
     
-    if (success == 0) {
+    if (success1 == 0) {
         temp_addr = interfaces;
         
         while (temp_addr != NULL) {
